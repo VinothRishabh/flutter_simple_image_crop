@@ -181,7 +181,8 @@ class ImgCropState extends State<ImgCrop> with TickerProviderStateMixin, Drag {
         onScaleStart: _isEnabled ? _handleScaleStart : null,
         onScaleUpdate: _isEnabled ? _handleScaleUpdate : null,
         onScaleEnd: _isEnabled ? _handleScaleEnd : null,
-        child: CustomPaint(
+        child: _image != null
+            ? CustomPaint(
           painter: _CropPainter(
             image: _image!,
             ratio: _ratio,
@@ -192,7 +193,8 @@ class ImgCropState extends State<ImgCrop> with TickerProviderStateMixin, Drag {
             chipShape: widget.chipShape,
             handleSize: widget.handleSize,
           ),
-        ),
+        )
+            : SizedBox(),
       ),
     );
   }

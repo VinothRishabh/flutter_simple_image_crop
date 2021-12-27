@@ -17,10 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
-      routes: {
-        "crop_page": (context) => SimpleCropRoute(),
-        "/": (context) => MyHomeRoute()
-      },
+      routes: {"crop_page": (context) => SimpleCropRoute(), "/": (context) => MyHomeRoute()},
     );
   }
 }
@@ -35,9 +32,7 @@ class _MyHomeRouteState extends State<MyHomeRoute> {
 
   Future getImage(type) async {
     var image = await ImagePicker.pickImage(
-        source: type == _sheetType.gallery
-            ? ImageSource.gallery
-            : ImageSource.camera);
+        source: type == _sheetType.gallery ? ImageSource.gallery : ImageSource.camera);
     if (image == null) return;
     Navigator.of(context).pop();
     Navigator.of(context).pushNamed('crop_page', arguments: {'image': image});
@@ -128,8 +123,7 @@ class _SimpleCropRouteState extends State<SimpleCropRoute> {
           ),
           backgroundColor: Colors.white,
           leading: new IconButton(
-            icon:
-                new Icon(Icons.navigate_before, color: Colors.black, size: 40),
+            icon: new Icon(Icons.navigate_before, color: Colors.black, size: 40),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ),
@@ -147,8 +141,7 @@ class _SimpleCropRouteState extends State<SimpleCropRoute> {
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             final crop = cropKey.currentState;
-            final croppedFile =
-                await crop.cropCompleted(args['image'], preferredSize: 1000);
+            final croppedFile = await crop.cropCompleted(args['image'], preferredSize: 1000);
             showImage(context, croppedFile);
           },
           tooltip: 'Increment',
