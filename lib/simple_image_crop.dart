@@ -13,3 +13,4 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
 part 'src/simpleCrop.dart';
 part 'src/simpleImageCrop.dart';
+
